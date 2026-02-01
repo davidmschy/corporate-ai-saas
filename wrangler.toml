@@ -1,0 +1,32 @@
+name = "corporate-ai-saas"
+main = "src/index.ts"
+compatibility_date = "2024-02-01"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+
+# Secrets (set via wrangler secret put)
+# OPENAI_API_KEY
+# ANTHROPIC_API_KEY
+# WHOP_API_KEY
+# AGENTMAIL_API_KEY
+
+# KV Namespaces
+[[kv_namespaces]]
+binding = "CORPORATE_AI_KV"
+id = "your_kv_namespace_id"
+
+# Durable Objects
+[[durable_objects.bindings]]
+name = "AGENT_SESSIONS"
+class_name = "AgentSession"
+
+# R2 Buckets (for document storage)
+[[r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "corporate-ai-documents"
+
+# Analytics
+[analytics]
+enabled = true
